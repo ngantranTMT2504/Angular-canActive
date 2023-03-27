@@ -1,0 +1,16 @@
+.register{
+    width: 40%;
+    margin: 5vh 25%;
+    
+    padding: 5px;
+}
+form{
+    margin: 10px;
+}
+form mat-form-field{
+    display: block;
+}
+.btn{
+    text-align: center;
+    color: lightcoral;
+}

@@ -1,0 +1,13 @@
+{
+  "user": [
+    {
+      "id": "admin",
+      "name": "admin12",
+      "password": "ngankim123",
+      "email": "ngan@gmail.com",
+      "gender": "female",
+      "role": "",
+      "isactive": true
+    }
+  ]
+}
