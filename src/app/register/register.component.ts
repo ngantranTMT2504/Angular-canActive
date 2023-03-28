@@ -7,10 +7,12 @@ import { AuthService } from '../service/auth.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
+  providers: [AuthService]
 })
-export class RegisterComponent{
-  
+export class RegisterComponent implements OnInit{
+
+  registerForm!: FormGroup;
 
   constructor( 
     private fb : FormBuilder,
@@ -19,7 +21,8 @@ export class RegisterComponent{
     private route : Router
     ){}
 
-    registerForm = this.fb.group({
+  ngOnInit(): void {
+    this.registerForm = this.fb.group({
       id : this.fb.control('', Validators.compose([Validators.required, Validators.minLength(5)])),
       name : this.fb.control('', Validators.required),
       password : this.fb.control('', Validators.compose([Validators.required])),
@@ -28,12 +31,9 @@ export class RegisterComponent{
       role: this.fb.control(""),
       isactive: this.fb.control(false)
     })
-  
-  getError(){
-    return
   }
 
-  proceedregisteration() {
+  proceedRegister() {
     if( this.registerForm.valid){
       this.service.proceedRegister(this.registerForm.value).subscribe(res => {
         this.toastr.success('Registered successfully');

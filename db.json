@@ -8,6 +8,15 @@
       "gender": "female",
       "role": "",
       "isactive": true
+    },
+    {
+      "id": "admin1",
+      "name": "Ngan Tran",
+      "password": "123456",
+      "email": "test@gmail.com",
+      "gender": "female",
+      "role": "",
+      "isactive": true
     }
   ]
 }

@@ -8,10 +8,8 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements DoCheck{
   menu = false;
+  constructor(private route: Router) {}
 
-  constructor(private route: Router) {
-
-  }
   ngDoCheck(): void {
     let currentUrl = this.route.url;
     if(currentUrl== '/login' || currentUrl == '/register'){
@@ -19,8 +17,6 @@ export class AppComponent implements DoCheck{
     }else{
       this.menu = true;
     }
-
-    
   }
 
 

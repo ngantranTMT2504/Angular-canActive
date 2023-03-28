@@ -1,9 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AuthService {
 
   constructor(private http : HttpClient) { }
@@ -21,7 +19,6 @@ export class AuthService {
   updateUser(code : any ,inputdata: any){
     return this.http.put(this.apiURL+'/'+ code,inputdata)
   }
-
   isLoggedIn(){
     return sessionStorage.getItem('username')!== null;
   }

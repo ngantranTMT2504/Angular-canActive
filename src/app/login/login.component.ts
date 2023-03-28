@@ -1,17 +1,18 @@
-import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Toast, ToastRef, ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [AuthService]
 })
-export class LoginComponent {
-
+export class LoginComponent implements OnInit {
   updatedata: any;
+  loginForm!: FormGroup
 
   constructor(
     private fb: FormBuilder,
@@ -22,10 +23,12 @@ export class LoginComponent {
     sessionStorage.clear();
   }
 
-  loginForm = this.fb.group({
-    username: this.fb.control('', Validators.compose([Validators.required, Validators.minLength(5)])),
-    password: this.fb.control('', Validators.required)
-  })
+  ngOnInit(): void {
+    this.loginForm = this.fb.group({
+      username: this.fb.control('', Validators.compose([Validators.required, Validators.minLength(5)])),
+      password: this.fb.control('', Validators.required)
+    })
+  }
 
   proceedLogin() {
     if (this.loginForm.valid) {
